@@ -2,6 +2,9 @@
 
 namespace Metrotask\Interfaces;
 
+/**
+ * Provide interface for getting data from any source
+ */
 interface DataLoader
 {
     /**

@@ -4,6 +4,9 @@ namespace Metrotask\Common;
 
 use Metrotask\Interfaces\OfferInterface;
 
+/**
+ * Base abstract class for types of loaded data
+ */
 abstract class AbstractOffer implements OfferInterface
 {
     /**

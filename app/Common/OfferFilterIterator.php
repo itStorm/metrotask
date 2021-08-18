@@ -4,6 +4,9 @@ namespace Metrotask\Common;
 
 use Iterator;
 
+/**
+ * Iterator filter for loaded data
+ */
 class OfferFilterIterator extends \FilterIterator
 {
     public const OPERATION_RANGE = 'range';
@@ -40,12 +43,7 @@ class OfferFilterIterator extends \FilterIterator
         $element = $this->getInnerIterator()->current();
         $value = $element->getField($this->filter['field']);
 
-        if (
-            (!$this->filter['operator'] && in_array($value, $this->filter['values'], false))
-            || ($this->filter['operator'] === self::OPERATION_RANGE && $value >= $this->filter['values'][0] && $value <= $this->filter['values'][1])
-        ) {
-            return true;
-        }
-        return false;
+        return (!$this->filter['operator'] && in_array($value, $this->filter['values'], false))
+            || ($this->filter['operator'] === self::OPERATION_RANGE && $value >= $this->filter['values'][0] && $value <= $this->filter['values'][1]);
     }
 }

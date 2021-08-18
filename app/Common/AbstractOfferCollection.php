@@ -25,6 +25,7 @@ abstract class AbstractOfferCollection implements OfferCollectionInterface
     }
 
     /**
+     * Create instance if item for collection
      * @param array $item
      * @return OfferInterface|null
      */

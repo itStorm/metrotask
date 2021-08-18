@@ -13,6 +13,7 @@ interface OfferInterface
     public function getId(): int;
 
     /**
+     * Get field name marked as Index
      * @return string
      */
     public static function getIndexName(): string;
