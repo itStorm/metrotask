@@ -1,0 +1,39 @@
+parameters:
+imports:
+    - { resource: 'parameters.yaml' }
+
+services:
+    _defaults:
+        autowire: true
+        public: true
+        bind:
+          $productsJsonPath: '%product.json.path%'
+
+    _instanceof:
+        Symfony\Component\Console\Command\Command:
+            tags: ['console.command']
+
+    info_log:
+        class: Monolog\Handler\StreamHandler
+        arguments:
+            - '%logger.info.path%'
+            - !php/const Monolog\Logger::INFO
+
+    Monolog\Logger:
+        class: Monolog\Logger
+        arguments:
+            - 'common_log'
+            - ['@info_log']
+        public: false
+
+
+    product_logger:
+        alias: Monolog\Logger
+        public: true
+
+    Metrotask\:
+        resource: '../app/'
+        exclude:
+            - '../app/Common/'
+            - '../app/Interfaces/'
+            - '../app/Product/'
